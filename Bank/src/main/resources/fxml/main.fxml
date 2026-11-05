@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.gui.MainController">
+   <children>
+      <Label alignment="CENTER" styleClass="title-label" text="Banking Management System">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </Label>
+      
+      <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <!-- Balance Check Tab -->
+            <Tab text="Check Balance">
+               <content>
+                  <VBox alignment="CENTER" spacing="20.0">
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="section-title" text="Account Balance Inquiry" />
+                        
+                        <HBox alignment="CENTER" spacing="15.0">
+                           <children>
+                              <Label text="Account Number:" />
+                              <TextField fx:id="balanceAccountField" promptText="Enter account number (e.g., ACC001)" />
+                              <Button onAction="#handleCheckBalance" styleClass="primary-button" text="Check Balance" />
+                           </children>
+                        </HBox>
+                        
+                        <Label fx:id="balanceLabel" styleClass="balance-label" text="Balance: $0.00" />
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            
+            <!-- Transfer Money Tab -->
+            <Tab text="Transfer Money">
+               <content>
+                  <VBox alignment="CENTER" spacing="20.0">
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="section-title" text="Money Transfer" />
+                        
+                        <GridPane hgap="15.0" vgap="15.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="From Account:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                              <TextField fx:id="fromAccountField" promptText="From account (e.g., ACC001)" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              
+                              <Label text="To Account:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                              <TextField fx:id="toAccountField" promptText="To account (e.g., ACC002)" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              
+                              <Label text="Amount:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                              <TextField fx:id="amountField" promptText="Amount" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              
+                              <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                              <TextField fx:id="descriptionField" promptText="Description (optional)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              
+                              <Button onAction="#handleTransfer" styleClass="danger-button" text="Transfer Money" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            
+            <!-- Add Customer Tab -->
+            <Tab text="Add Customer">
+               <content>
+                  <VBox alignment="CENTER" spacing="20.0">
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="section-title" text="Add New Customer" />
+                        
+                        <GridPane hgap="15.0" vgap="15.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                              <TextField fx:id="firstNameField" promptText="First Name" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              
+                              <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                              <TextField fx:id="lastNameField" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              
+                              <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                              <TextField fx:id="emailField" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              
+                              <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                              <TextField fx:id="phoneField" promptText="Phone Number" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              
+                              <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                              <TextArea fx:id="addressArea" prefRowCount="3" promptText="Address" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              
+                              <Button onAction="#handleAddCustomer" styleClass="success-button" text="Add Customer" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox> 
