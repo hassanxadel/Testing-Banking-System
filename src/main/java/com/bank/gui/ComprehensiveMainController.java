@@ -1335,7 +1335,7 @@ public class ComprehensiveMainController implements Initializable {
                     String expiryDate = java.time.LocalDate.now().plusYears(2).format(java.time.format.DateTimeFormatter.ofPattern("MM/yy"));
                     
                     // Generate CVV
-                    String cvv = String.format("%03d", (int)(Math.random() * 1000));
+                    String cvv = String.format("%03d", new java.security.SecureRandom().nextInt(1000));
                     
                     double creditLimit = "CREDIT".equals(typeBox.getValue()) ? Double.parseDouble(limitField.getText()) : 0.0;
                     

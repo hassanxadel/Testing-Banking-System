@@ -1377,12 +1377,14 @@ public class DatabaseManager {
         return "ACC001";
     }
     
+    private static final java.security.SecureRandom RNG = new java.security.SecureRandom();
+
     public String getNextCardNumber() {
         // Generate a random 16-digit card number (simplified for demo)
-        return String.format("4532-%04d-%04d-%04d", 
-            (int)(Math.random() * 10000),
-            (int)(Math.random() * 10000),
-            (int)(Math.random() * 10000));
+        return String.format("4532-%04d-%04d-%04d",
+            RNG.nextInt(10000),
+            RNG.nextInt(10000),
+            RNG.nextInt(10000));
     }
     
     // Get next available numbers for IDs
